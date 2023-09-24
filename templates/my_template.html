@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.name.label_tag }}
+        {{ form.name }}
+    </div>
+    <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+    </div>
+    <!-- Diğer form alanları burada eklenebilir -->
+    <button type="submit" class="btn btn-primary">Gönder</button>
+</form>
+{% endblock content %}

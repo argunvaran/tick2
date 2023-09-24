@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rapor</title>
+</head>
+<body>
+    <h1>Kullanıcılar, Ürünler ve Müşteriler İçin Harcanan Saatler</h1>
+
+    <h2>Kullanıcı Bazında Rapor</h2>
+    <table border="1">
+        <tr>
+            <th>Kullanıcı</th>
+            <th>Toplam Harcanan Saat</th>
+        </tr>
+        {% for user, hours in user_casetimes.items %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ hours }} saat</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Müşteri Bazında Rapor</h2>
+    <table border="1">
+        <tr>
+            <th>Müşteri</th>
+            <th>Toplam Harcanan Saat</th>
+        </tr>
+        {% for customer, hours in customer_casetimes.items %}
+        <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ hours }} saat</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Ürün Bazında Rapor</h2>
+    <table border="1">
+        <tr>
+            <th>Ürün</th>
+            <th>Toplam Harcanan Saat</th>
+        </tr>
+        {% for product, hours in product_casetimes.items %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ hours }} saat</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>

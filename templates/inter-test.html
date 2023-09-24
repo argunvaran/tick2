@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Rapor - Product, Customer ve Case Kırılımı</h1>
+
+  <h2>Müşterilere Göre Harcanan Süreler</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Müşteri</th>
+        <th>Toplam Süre (Dakika)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for customer, duration in customer_times.items %}
+        <tr>
+          <td>{{ customer }}</td>
+          <td>{{ duration }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2>Ürünlere Göre Harcanan Süreler</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Ürün</th>
+        <th>Toplam Süre (Dakika)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product, duration in product_times.items %}
+        <tr>
+          <td>{{ product }}</td>
+          <td>{{ duration }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table class="table">
+    <thead>
+        <tr>
+            <th>Kullanıcı Adı</th>
+            <th>Harcadığı Saat</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user, hours in user_casetimes.items %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ hours }} saat</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

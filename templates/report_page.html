@@ -1,0 +1,60 @@
+<!-- rapor_sayfasi.html -->
+
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html>
+<head>
+    <title>Report Page</title>
+</head>
+{% block content %}
+<body>
+    <h1>Case Hours by Customers</h1>
+<!-- Müşteri raporu tablosu -->
+<table class="table">
+    <!-- Tablo başlıkları -->
+    <thead>
+        <tr>
+            <th>CustomerName</th>
+            <th>Case Hour</th>
+        </tr>
+    </thead>
+    <!-- Tablo verileri -->
+    <tbody>
+        {% for customer, hours in casetimes.items %}
+            <tr>
+                <td>{{ customer.name }}</td>
+                <td>{{ hours }} saat</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+
+<h1>Case Hours by Products</h1>
+<!-- Ürün raporu tablosu -->
+<table class="table">
+    <!-- Tablo başlıkları -->
+    <thead>
+        <tr>
+            <th>ProductName</th>
+            <th>Case Hour</th>
+        </tr>
+    </thead>
+    <!-- Tablo verileri -->
+    <tbody>
+        {% for product, duration in casetimest.items %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ duration }} saat</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Excel'e Aktar düğmesi -->
+<a href="{% url 'export_to_excel' %}" class="btn btn-primary">Excel'e Aktar</a>
+
+</body>
+{% endblock content %}
+</html>

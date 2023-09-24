@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>Kayıt Ol</h3>
+
+<hr>
+
+<form method="post" class="form-container">
+    {% csrf_token %}    
+    <div class="form-group text-center"> <!-- Form alanlarını ve düğmeyi ortalamak için "text-center" kullanılır -->
+        {{ form.as_p }}
+    </div>
+    <br>
+    <button type="submit" class="btn btn-danger">Kayıt Ol</button>
+    
+</form>
+
+<br>
+
+{% endblock content %}

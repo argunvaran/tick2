@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html>
+<head>
+    <title>Edit Case</title>
+</head>
+{% block content %}
+<body>
+    <h1>Edit Case</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Kaydet</button>
+    </form>
+</body>
+{% endblock content %}
+</html>

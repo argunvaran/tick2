@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html>
+<head>
+    <title>All Cases</title>
+    <style>
+        .card {
+            margin: 10px;
+            width: 18rem;
+            float: left;
+        }
+    </style>
+</head>
+{% block content %}
+<body>
+    <h1>All Cases</h1>
+    <br>
+    <form method="GET" action="{% url 'all_cases' %}">
+        <label for="start_date">Başlangıç Tarihi:</label>
+        <input type="date" name="start_date" id="start_date">
+    
+        <label for="end_date">Bitiş Tarihi:</label>
+        <input type="date" name="end_date" id="end_date">
+    
+        <label for="start_time">Başlangıç Saati:</label>
+        <input type="time" name="start_time" id="start_time">
+    
+        <label for="end_time">Bitiş Saati:</label>
+        <input type="time" name="end_time" id="end_time">
+    
+        <button type="submit">Filtrele</button>
+    </form>
+    <br>
+    <form method="GET" action="{% url 'all_cases' %}">
+        <input type="text" name="q" placeholder="Search...">        
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <br>
+    <div class="card-deck">
+        {% for case in cases %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ case.title }}</h5>
+                <p class="card-text">Müşteri: {{ case.customer }}</p>
+                <p class="card-text">Ürün: {{ case.product }}</p>
+                <p class="card-text">Sorun: {{ case.title }}</p>
+                <p class="card-text">Açıklama: {{ case.description1 }}</p>
+                <p class="card-text">Çözüm: {{ case.description2 }}</p>
+                <p class="card-text">Durum: {{ case.status }}</p>
+                <p class="card-text">Başlangıç: {{ case.start_time }}</p>
+                <p class="card-text">Bitiş: {{ case.end_time }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'export_to_excel_cases' %}" class="btn btn-primary">Excel'e Aktar</a>
+</body>
+{% endblock content %}
+</html>

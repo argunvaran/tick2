@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+<html>
+
+<head>
+    
+    <title>{% block title %} Add Case {% endblock %}</title>
+</head>
+
+{% block content %}
+<body>
+    <div class="container justify-content-center">
+
+        <div class="row justify-content-center"> <!-- "row" içinde formu ortalamak için "justify-content-center" kullanılır -->
+            <div class="col-md-8">
+                <h1>Add Case</h1>
+                <form method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <input type="hidden" name="user" value="{{ request.user.id }}">
+                    <div class="form-group text-center"> <!-- Form alanlarını ve düğmeyi ortalamak için "text-center" kullanılır -->
+                        {{ form.as_p }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Case</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+{% endblock content %}
+</html>
